@@ -3,6 +3,8 @@ import math
 
 
 class Shape(ABC):
+    # abstractmethod forces every subclass to provide its own calculate_area
+    # Shape itself can never be instantiated directly
     @abstractmethod
     def calculate_area(self):
         pass
@@ -30,18 +32,34 @@ class Rectangle(Shape):
 
 
 if __name__ == "__main__":
+    import os
+
+    # sample inputs that answer the exercise
+    circle = Circle(3)
+    rectangle = Rectangle(4, 5)
+    lines = [
+        f"Circle area: {circle.calculate_area():.4f}",
+        f"Rectangle area: {rectangle.calculate_area()}",
+    ]
+
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Assignment_03_05_output.txt")
+    with open(output_path, "w") as f:
+        f.write("\n".join(lines) + "\n")
+    for line in lines:
+        print(line)
+
+    # edge and negative case checks
     try:
         Shape()
         assert False, "expected TypeError instantiating abstract class"
     except TypeError:
         pass
 
-    c = Circle(3)
-    assert abs(c.calculate_area() - math.pi * 9) < 1e-9
-    assert isinstance(c, Shape)
+    assert abs(circle.calculate_area() - math.pi * 9) < 1e-9
+    assert isinstance(circle, Shape)
 
-    c0 = Circle(0)
-    assert c0.calculate_area() == 0
+    circle_zero = Circle(0)
+    assert circle_zero.calculate_area() == 0
 
     try:
         Circle(-2)
@@ -49,12 +67,11 @@ if __name__ == "__main__":
     except ValueError:
         pass
 
-    r = Rectangle(4, 5)
-    assert r.calculate_area() == 20
-    assert isinstance(r, Shape)
+    assert rectangle.calculate_area() == 20
+    assert isinstance(rectangle, Shape)
 
-    r0 = Rectangle(0, 5)
-    assert r0.calculate_area() == 0
+    rectangle_zero = Rectangle(0, 5)
+    assert rectangle_zero.calculate_area() == 0
 
     try:
         Rectangle(-1, 5)

@@ -1,12 +1,13 @@
 class Student:
     def __init__(self, name, age, grade):
         self.name = name
+        # leading double underscore makes this private (name-mangled to _Student__age)
         self.__age = None
         self.set_age(age)
         self.grade = grade
 
-    # age is name-mangled to __age so it cannot be reached as student.age
     def set_age(self, age):
+        # keeps invalid ages from ever being stored
         if age < 0:
             raise ValueError("age cannot be negative")
         self.__age = age
@@ -21,26 +22,48 @@ class Student:
 
 
 if __name__ == "__main__":
-    s = Student("Carol", 15, "9th")
-    assert s.get_age() == 15
+    import io
+    import os
+    from contextlib import redirect_stdout
 
-    s.set_age(20)
-    assert s.get_age() == 20
+    def capture(func, *args, **kwargs):
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            ret = func(*args, **kwargs)
+        return ret, buf.getvalue().strip()
+
+    # sample inputs that answer the exercise
+    student = Student("Carol", 15, "9th")
+    _, out1 = capture(student.display_info)
+
+    student.set_age(16)
+    _, out2 = capture(student.display_info)
+
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Assignment_03_03_output.txt")
+    with open(output_path, "w") as f:
+        f.write(out1 + "\n" + out2 + "\n")
+
+    # edge and negative case checks
+    assert student.get_age() == 16
+
+    student.set_age(20)
+    assert student.get_age() == 20
 
     try:
-        s.set_age(-5)
+        student.set_age(-5)
         assert False, "expected ValueError for negative age"
     except ValueError:
         pass
-    assert s.get_age() == 20
+    assert student.get_age() == 20
 
+    # the attribute should not be reachable as student.age since it is private
     try:
-        _ = s.age
+        _ = student.age
         assert False, "age should not be directly accessible"
     except AttributeError:
         pass
 
-    assert s._Student__age == 20
+    assert student._Student__age == 20
 
     try:
         Student("Dan", -1, "8th")
