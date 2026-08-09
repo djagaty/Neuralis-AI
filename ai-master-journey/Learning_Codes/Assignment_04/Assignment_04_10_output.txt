@@ -1,0 +1,22 @@
+Part 1: sum of unmasked elements in a 4x4 array, values above 10 masked
+array =
+[[ 2 15 13  9]
+ [ 9 17  2 14]
+ [ 4  2 11 19]
+ [14 15 14 15]]
+masked =
+[[2 -- -- 9]
+ [9 -- 2 --]
+ [4 2 -- --]
+ [-- -- -- --]]
+sum of unmasked = 28
+
+Part 2: diagonal masked and filled with the mean of a 3x3 array
+array =
+[[10  3 16]
+ [ 9 10  8]
+ [ 4 18 15]]
+filled =
+[[ 9.66666667  3.         16.        ]
+ [ 9.          9.66666667  8.        ]
+ [ 4.         18.          9.66666667]]

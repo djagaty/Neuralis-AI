@@ -1,0 +1,23 @@
+Part 1: adding a length-3 vector to every row of a 3x3 array
+array =
+[[ 2 15 13]
+ [ 9  9 17]
+ [ 2 14  4]]
+vector = [ 2 11 19]
+result =
+[[ 4 26 32]
+ [11 20 36]
+ [ 4 25 23]]
+
+Part 2: subtracting a length-4 vector from every column of a 4x4 array
+array =
+[[14 15 14 15]
+ [10  3 16  9]
+ [10  8  4 18]
+ [15 13  8 16]]
+vector = [11  9  9  5]
+result =
+[[ 3  4  3  4]
+ [ 1 -6  7  0]
+ [ 1 -1 -5  9]
+ [10  8  3 11]]

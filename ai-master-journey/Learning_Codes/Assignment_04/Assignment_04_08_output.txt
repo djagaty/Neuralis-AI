@@ -1,0 +1,20 @@
+Part 1: corner elements of a 5x5 random array
+array =
+[[ 5 38 33 22 22]
+ [43  5 35 10  5]
+ [26 48 37 38 36]
+ [39 26  7 42 23]
+ [25 19  9 46 39]]
+corners = [ 5 22 25 39]
+
+Part 2: values above 10 clipped to 10 in a 4x4 random array
+array =
+[[13  8 16 11]
+ [ 9  9  5  2]
+ [11 17  2 17]
+ [16  6 13  4]]
+clipped =
+[[10  8 10 10]
+ [ 9  9  5  2]
+ [10 10  2 10]
+ [10  6 10  4]]

@@ -1,0 +1,7 @@
+Part 1: 3rd-5th row, 2nd-4th column block of a 6x6 range array
+[[14 15 16]
+ [20 21 22]
+ [26 27 28]]
+
+Part 2: border elements of a 5x5 random array
+[ 9 77 65 44 43 50 37 19 92 78 86 53 78 10 72 45]

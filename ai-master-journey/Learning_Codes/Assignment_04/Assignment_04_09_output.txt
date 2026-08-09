@@ -1,0 +1,7 @@
+Part 1: people sorted by age
+[('Bob', 25, 75.2) ('Alice', 30, 60.5) ('Carol', 35, 55. )]
+
+Part 2: pairwise distances between points
+[[ 0.  5. 10.]
+ [ 5.  0.  5.]
+ [10.  5.  0.]]
